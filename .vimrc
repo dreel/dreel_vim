@@ -2,6 +2,7 @@
 
 set nocompatible
 set background=dark
+colorscheme koehler
 
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
@@ -18,7 +19,6 @@ endif
 filetype plugin indent on
 syntax on
 set mouse=a
-set autochdir
 scriptencoding utf-8
 
 set cursorline
@@ -81,6 +81,7 @@ if has('gui_running')
   set guioptions-=T             " remove the toolbar
   set lines=40                  " 40 lines of text instead of 24,
   set transparency=5            " Make the window slightly transparent
+  set autochdir
 else
   set term=builtin_ansi         " Make arrow and other keys work
 endif
