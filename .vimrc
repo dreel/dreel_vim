@@ -51,6 +51,8 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 
+set switchbuf=split,usetab
+
 " Remove trailing whitespaces and ^M chars
 autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
@@ -64,6 +66,32 @@ map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <C-K> <C-W>k<C-W>_
 
+function! InitializeDirectories()
+  let separator = "."
+  let parent = $HOME 
+  let prefix = '.vim'
+  let dir_list = { 
+        \ 'backup': 'backupdir', 
+        \ 'views': 'viewdir', 
+        \ 'swap': 'directory' }
+
+  for [dirname, settingname] in items(dir_list)
+    let directory = parent . '/' . prefix . dirname . "/"
+    if exists("*mkdir")
+      if !isdirectory(directory)
+        call mkdir(directory)
+      endif
+    endif
+    if !isdirectory(directory)
+      echo "Warning: Unable to create backup directory: " . directory
+      echo "Try: mkdir -p " . directory
+    else  
+      let directory = substitute(directory, " ", "\\\\ ", "")
+      exec "set " . settingname . "=" . directory
+    endif
+  endfor
+endfunction
+call InitializeDirectories() 
 
 map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <leader>e :NERDTreeFind<CR>
@@ -76,6 +104,7 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
+set directory=$HOME/.vimswap/
 
 if has('gui_running')
   set guioptions-=T             " remove the toolbar
