@@ -53,6 +53,8 @@ set softtabstop=2
 
 set switchbuf=split,usetab
 
+let $JS_CMD='node'
+
 " Remove trailing whitespaces and ^M chars
 autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
@@ -127,6 +129,18 @@ function! NERDTreeInitAsNeeded()
         wincmd l
     endif
 endfunction
+
+
+command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(values(buffer_numbers))
+endfunction
+
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
