@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/genutils"]
 	path = .vim/bundle/genutils
 	url = https://github.com/clones/vim-genutils.git
+[submodule ".vim/bundle/command-t"]
+	path = .vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git

@@ -106,13 +106,15 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
+" Command-T
+:set wildignore=bin/**,**/buildtemp/**,**/3rdparty/**,**/native/**,golf/bin/** 
+
 set directory=$HOME/.vimswap/
 
 if has('gui_running')
   set guioptions-=T             " remove the toolbar
   set lines=40                  " 40 lines of text instead of 24,
   set transparency=5            " Make the window slightly transparent
-  set autochdir
 else
   set term=builtin_ansi         " Make arrow and other keys work
 endif
