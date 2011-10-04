@@ -13,3 +13,9 @@
 [submodule ".vim/bundle/supertab"]
 	path = .vim/bundle/supertab
 	url = https://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/breakpts"]
+	path = .vim/bundle/breakpts
+	url = https://github.com/vim-scripts/BreakPts.git
+[submodule ".vim/bundle/genutils"]
+	path = .vim/bundle/genutils
+	url = https://github.com/clones/vim-genutils.git

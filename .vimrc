@@ -141,6 +141,8 @@ function! QuickfixFilenames()
   return join(values(buffer_numbers))
 endfunction
 
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
 
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
