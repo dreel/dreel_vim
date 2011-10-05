@@ -16,7 +16,7 @@ if !has('win32') && !has('win64')
   set term=$TERM
 endif
 
-filetype plugin indent on
+" filetype plugin indent on
 syntax on
 set mouse=a
 scriptencoding utf-8
@@ -107,7 +107,11 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
 " Command-T
-:set wildignore=bin/**,**/buildtemp/**,**/3rdparty/**,**/native/**,golf/bin/** 
+let g:CommandTAcceptSelectionMap='<C-CR>'
+let g:CommandTAcceptSelectionSplitMap='<CR>'
+map <D-j> :cnext<CR>
+map <D-k> :cprev<CR>
+
 
 set directory=$HOME/.vimswap/
 
