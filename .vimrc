@@ -16,7 +16,7 @@ if !has('win32') && !has('win64')
   set term=$TERM
 endif
 
-" filetype plugin indent on
+filetype plugin indent on
 syntax on
 set mouse=a
 scriptencoding utf-8
@@ -67,6 +67,10 @@ map <C-K> <C-W>k<C-W>_
 map <C-L> <C-W>l<C-W>_
 map <C-H> <C-W>h<C-W>_
 map <C-K> <C-W>k<C-W>_
+
+" QuickFix Quickmove
+map <A-J> :cnext<CR>
+map <A-K> :cprev<CR>
 
 function! InitializeDirectories()
   let separator = "."
